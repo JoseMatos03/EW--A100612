@@ -1,8 +1,0 @@
-1. formatar dataset para ser compatível com json-server
-    - extrair intervenções e veículo
-2. abrir json-server
-3. desenvolver páginas
-    - Lista de reparações (link para aceder ao dataset -> pede reparações)
-        - Aparece tabela com todas. Clicar numa -> página com os dados dessa reparação.
-    - Lista de intervenções (...)
-    - Lista de veículos (...)

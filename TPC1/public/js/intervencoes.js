@@ -1,27 +1,26 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const itemsPerPage = 10;
-    let currentPage = 1;
-    let intervencoes = [];
+document.addEventListener("DOMContentLoaded", function () {
+    const intervencoesData = document.getElementById("intervencoes-data").textContent;
+    const intervencoes = JSON.parse(intervencoesData);
 
-    const tableBody = document.querySelector("#intervencoes-table tbody");
-    const prevButton = document.getElementById("prev-page");
-    const nextButton = document.getElementById("next-page");
+    const tableBody = document.getElementById("table-body");
+    const prevPageBtn = document.getElementById("prev-page");
+    const nextPageBtn = document.getElementById("next-page");
     const pageInfo = document.getElementById("page-info");
 
-    // Fetch data from json-server
-    axios.get("http://localhost:5000/intervencoes")
-        .then(response => {
-            intervencoes = response.data;
-            updateTable();
-        })
-        .catch(error => console.error("Error fetching intervencoes:", error));
+    let currentPage = 1;
+    const itemsPerPage = 10;
+    const totalPages = Math.ceil(intervencoes.length / itemsPerPage);
 
-    function updateTable() {
+    function renderTable() {
+        // Clear the table first
         tableBody.innerHTML = "";
 
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const paginatedData = intervencoes.slice(startIndex, startIndex + itemsPerPage);
+        // Get data slice for current page
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedData = intervencoes.slice(start, end);
 
+        // Populate the table
         paginatedData.forEach(intervencao => {
             const row = document.createElement("tr");
 
@@ -34,27 +33,29 @@ document.addEventListener("DOMContentLoaded", () => {
             tableBody.appendChild(row);
         });
 
-        updatePaginationControls();
+        // Update pagination info
+        pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
+
+        // Disable/enable buttons
+        prevPageBtn.disabled = currentPage === 1;
+        nextPageBtn.disabled = currentPage === totalPages;
     }
 
-    function updatePaginationControls() {
-        pageInfo.textContent = `Página ${currentPage} de ${Math.ceil(intervencoes.length / itemsPerPage)}`;
-
-        prevButton.disabled = currentPage === 1;
-        nextButton.disabled = currentPage >= Math.ceil(intervencoes.length / itemsPerPage);
-    }
-
-    prevButton.addEventListener("click", () => {
+    // Event listeners for pagination buttons
+    prevPageBtn.addEventListener("click", () => {
         if (currentPage > 1) {
             currentPage--;
-            updateTable();
+            renderTable();
         }
     });
 
-    nextButton.addEventListener("click", () => {
-        if (currentPage < Math.ceil(intervencoes.length / itemsPerPage)) {
+    nextPageBtn.addEventListener("click", () => {
+        if (currentPage < totalPages) {
             currentPage++;
-            updateTable();
+            renderTable();
         }
     });
+
+    // Initial table render
+    renderTable();
 });

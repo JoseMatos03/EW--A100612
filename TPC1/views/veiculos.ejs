@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Veículos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <a style="position: absolute" class="button" href="/">Voltar</a>
+    <h1>Lista de Veículos</h1>
+
+    <table id="veiculos-table">
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Matrícula</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Body of the table will be inserted dynamically -->
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button id="prev-page">⏮ Anterior</button>
+      <span id="page-info"></span>
+      <button id="next-page">Próxima ⏭</button>
+    </div>
+
+    <script id="veiculos-data" type="application/json">
+      <%- JSON.stringify(veiculos) %>
+    </script>
+    <script src="js/veiculos.js"></script>
+  </body>
+</html>

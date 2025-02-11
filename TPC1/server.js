@@ -2,10 +2,10 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 
-app.set("view engine", "ejs"); // Set EJS as the template engine
-app.use(express.static("public")); // Serve static files (CSS, JS, etc.)
+app.set("view engine", "ejs");
+app.use(express.static("public"));
 
-const JSON_SERVER_URL = "http://localhost:5000"; // Replace with your json-server URL
+const JSON_SERVER_URL = "http://localhost:5000";
 
 app.get("/reparacoes", async (req, res) => {
     try {

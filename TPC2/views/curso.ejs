@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Curso</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="button" href="/cursos">Voltar para Lista de Cursos</a>
+    <h1>Detalhes do Curso</h1>
+
+    <div class="curso-details">
+      <p><strong>ID:</strong> <%= curso.id %></p>
+      <p><strong>Designação:</strong> <%= curso.designacao %></p>
+      <p><strong>Duração:</strong> <%= curso.duracao %></p>
+      <p><strong>Instrumento:</strong> <%= curso.instrumento["#text"] %></p>
+    </div>
+  </body>
+</html>

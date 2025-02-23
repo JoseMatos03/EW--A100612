@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <a style="position: absolute" class="button" href="/">Voltar</a>
+    <h1>Lista de Alunos</h1>
+
+    <table id="alunos-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Data de Nascimento</th>
+          <th>Curso</th>
+          <th>Ano</th>
+          <th>Instrumento</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Body of the table will be inserido dinamicamente -->
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button id="prev-page">⏮ Anterior</button>
+      <span id="page-info"></span>
+      <button id="next-page">Próxima ⏭</button>
+    </div>
+
+    <script id="alunos-data" type="application/json">
+      <%- JSON.stringify(alunos) %>
+    </script>
+    <script src="js/alunos.js"></script>
+  </body>
+</html>

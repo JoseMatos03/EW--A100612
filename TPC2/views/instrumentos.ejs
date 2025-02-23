@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Instrumentos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <a style="position: absolute" class="button" href="/">Voltar</a>
+    <h1>Lista de Instrumentos</h1>
+
+    <table id="instrumentos-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- O conteúdo da tabela será inserido dinamicamente -->
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button id="prev-page">⏮ Anterior</button>
+      <span id="page-info"></span>
+      <button id="next-page">Próxima ⏭</button>
+    </div>
+
+    <script id="instrumentos-data" type="application/json">
+      <%- JSON.stringify(instrumentos) %>
+    </script>
+    <script src="js/instrumentos.js"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Instrumento</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="button" href="/instrumentos">Voltar para Lista de Instrumentos</a>
+    <h1>Detalhes do Instrumento</h1>
+
+    <div class="instrumento-details">
+      <p><strong>ID:</strong> <%= instrumento.id %></p>
+      <p><strong>Designação:</strong> <%= instrumento["#text"] %></p>
+    </div>
+  </body>
+</html>

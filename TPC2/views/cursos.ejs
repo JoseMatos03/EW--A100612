@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Cursos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <a style="position: absolute" class="button" href="/">Voltar</a>
+    <h1>Lista de Cursos</h1>
+
+    <table id="cursos-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Duração (meses)</th>
+          <th>Instrumento</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Body of the table will be inserted dynamically -->
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button id="prev-page">⏮ Anterior</button>
+      <span id="page-info"></span>
+      <button id="next-page">Próxima ⏭</button>
+    </div>
+
+    <script id="cursos-data" type="application/json">
+      <%- JSON.stringify(cursos) %>
+    </script>
+    <script src="js/cursos.js"></script>
+  </body>
+</html>

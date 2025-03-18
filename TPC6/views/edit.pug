@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title Editar Publicação
+  body
+    h1 Editar Publicação
+    form(method="POST", action=`/${publication._id}/edit`)
+      label(for="type") Tipo:
+      input(type="text", name="type", value=publication.type)
+      br
+      label(for="id") ID:
+      input(type="text", name="id", value=publication.id)
+      br
+      label(for="authors") Autores (separados por vírgula):
+      input(type="text", name="authors", value=publication.authors.join(', '))
+      br
+      label(for="title") Título:
+      input(type="text", name="title", value=publication.title)
+      br
+      label(for="booktitle") Booktitle:
+      input(type="text", name="booktitle", value=publication.booktitle)
+      br
+      label(for="address") Endereço:
+      input(type="text", name="address", value=publication.address)
+      br
+      label(for="year") Ano:
+      input(type="text", name="year", value=publication.year)
+      br
+      label(for="month") Mês:
+      input(type="text", name="month", value=publication.month)
+      br
+      label(for="doi") DOI:
+      input(type="text", name="doi", value=publication.doi)
+      br
+      button(type="submit") Atualizar

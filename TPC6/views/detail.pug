@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Detalhes da Publicação
+  body
+    h1= publication.title
+    p Tipo: #{publication.type}
+    p ID: #{publication.id}
+    p Autores: #{publication.authors.join(', ')}
+    p Booktitle: #{publication.booktitle}
+    p Endereço: #{publication.address}
+    p Ano: #{publication.year}
+    p Mês: #{publication.month}
+    p DOI: #{publication.doi}
+    a(href=`/${publication._id}/edit`) Editar
+    form(method="POST", action=`/${publication._id}/delete`)
+      button(type="submit") Apagar
+    br
+    a(href="/") Voltar

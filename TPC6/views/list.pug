@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title Lista de Publicações
+  body
+    h1 Publicações
+    a(href="/new") Nova Publicação
+    ul
+      each publication in publications
+        li
+          a(href=`/${publication._id}`) #{publication.title}

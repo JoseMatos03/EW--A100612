@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title Nova Publicação
+  body
+    h1 Criar Publicação
+    form(method="POST", action="/")
+      label(for="type") Tipo:
+      input(type="text", name="type")
+      br
+      label(for="id") ID:
+      input(type="text", name="id")
+      br
+      label(for="authors") Autores (separados por vírgula):
+      input(type="text", name="authors")
+      br
+      label(for="title") Título:
+      input(type="text", name="title")
+      br
+      label(for="booktitle") Booktitle:
+      input(type="text", name="booktitle")
+      br
+      label(for="address") Endereço:
+      input(type="text", name="address")
+      br
+      label(for="year") Ano:
+      input(type="text", name="year")
+      br
+      label(for="month") Mês:
+      input(type="text", name="month")
+      br
+      label(for="doi") DOI:
+      input(type="text", name="doi")
+      br
+      button(type="submit") Criar

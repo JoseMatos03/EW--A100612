@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title= title
+  body
+    h1 Detalhes do Contrato #{contrato.idcontrato}
+    ul
+      li ID: #{contrato.idcontrato}
+      li Anúncio: #{contrato.nAnuncio || 'N/A'}
+      li Tipo de Procedimento: #{contrato.tipoprocedimento}
+      li Objeto: #{contrato.objectoContrato}
+      li Data Publicação: #{contrato.dataPublicacao.toISOString().split('T')[0]}
+      li Data Celebração: #{contrato.dataCelebracaoContrato.toISOString().split('T')[0]}
+      li Preço: #{contrato.precoContratual.toFixed(2)} €
+      li Prazo Execução: #{contrato.prazoExecucao} dias
+      li NIPC Entidade:
+        a(href=`/entidades/${contrato.NIPC_entidade_comunicante}`) #{contrato.NIPC_entidade_comunicante}
+      li Entidade Comunicante: #{contrato.entidade_comunicante}
+      li Fundamentação: #{contrato.fundamentacao}
+    p
+      a(href="/") Voltar à página principal

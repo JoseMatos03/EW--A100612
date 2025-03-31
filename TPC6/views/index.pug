@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title= title
+    style.
+      table { width: 100%; border-collapse: collapse; }
+      th, td { border: 1px solid black; padding: 8px; text-align: left; }
+      th { background-color: #f2f2f2; }
+  body
+    h1 Lista de Contratos
+    table
+      thead
+        tr
+          th ID Contrato
+          th Objeto do Contrato
+          th Data Celebração
+          th Preço Contratual
+          th NIPC Entidade
+          th Entidade Comunicante
+      tbody
+        each contrato in contratos
+          tr
+            td: a(href=`/${contrato.idcontrato}`) #{contrato.idcontrato}
+            td= contrato.objectoContrato
+            td= contrato.dataCelebracaoContrato.toISOString().split('T')[0]  // Format date
+            td= contrato.precoContratual.toFixed(2) + " €"
+            td: a(href=`/entidades/${contrato.NIPC_entidade_comunicante}`) #{contrato.NIPC_entidade_comunicante}
+            td= contrato.entidade_comunicante

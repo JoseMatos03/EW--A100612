@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= title
+  body
+    h1 Entidade #{entidade}
+    h2 NIPC: #{contratos[0].NIPC_entidade_comunicante}
+    h3 Total Valor dos Contratos: #{totalValor.toFixed(2)} €
+
+    table
+      thead
+        tr
+          th ID Contrato
+          th Objeto do Contrato
+          th Data Celebração
+          th Preço Contratual
+      tbody
+        each contrato in contratos
+          tr
+            td: a(href=`/${contrato.idcontrato}`) #{contrato.idcontrato}
+            td= contrato.objectoContrato
+            td= contrato.dataCelebracaoContrato.toISOString().split('T')[0]
+            td= contrato.precoContratual.toFixed(2) + " €"
+
+    p
+      a(href="/") Voltar à página principal

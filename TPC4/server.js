@@ -6,7 +6,7 @@ var http = require('http')
 var axios = require('axios')
 const { parse } = require('querystring');
 
-var templates = require('./templates')          // Necessario criar e colocar na mesma pasta
+var templates = require('./templates.js')          // Necessario criar e colocar na mesma pasta
 var static = require('./static.js')             // Colocar na mesma pasta
 
 // Aux functions
@@ -38,7 +38,7 @@ var alunosServer = http.createServer((req, res) => {
     }
     else{
         switch(req.method){
-            case "GET": 
+            case "GET":
                 // GET /alunos --------------------------------------------------------------------
                 if(req.url == '/' || req.url == '/alunos'){
                     axios.get("http://localhost:3000/alunos?_sort=nome")
@@ -168,7 +168,7 @@ var alunosServer = http.createServer((req, res) => {
                     res.end()
                 }
                 break
-            default: 
+            default:
                 // Outros metodos nao sao suportados
                 res.writeHead(500, {'Content-Type' : 'text/html; charset=utf-8'})
                 res.write("<p>Método não suportado: " + req.method + "</p>")
@@ -181,6 +181,3 @@ var alunosServer = http.createServer((req, res) => {
 alunosServer.listen(3050, ()=>{
     console.log("Servidor à escuta na porta 3050...")
 })
-
-
-

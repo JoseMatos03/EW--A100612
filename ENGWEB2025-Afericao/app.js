@@ -3,8 +3,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 // Routers
-const apiRouter = require('./routes/api');      // API definida anteriormente
-const viewsRouter = require('./routes/views');  // Novo router para as views
+const apiRouter = require('./ex1/api/bookAPI');
+const viewsRouter = require('./ex2/routes/views');
 
 const app = express();
 
@@ -16,13 +16,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 
 // Ligação à BD (ajusta a string de conexão conforme necessário)
-mongoose.connect('mongodb://localhost:27017/afericao')
+mongoose.connect('mongodb://localhost:27017/livros')
 .then(() => console.log('MongoDB conectado'))
 .catch(err => console.error(err));
 
 // Monta os routers
-app.use('/api', apiRouter); // API, ex: /api/books
-app.use('/', viewsRouter);  // Views, ex: / e /:id, /entidades/:authorId
+app.use('/', apiRouter);
+app.use('/', viewsRouter);
 
 const PORT = 17001;
 app.listen(PORT, () => console.log(`Servidor a correr na porta ${PORT}`));

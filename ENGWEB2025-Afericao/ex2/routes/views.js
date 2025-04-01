@@ -2,20 +2,16 @@ const express = require('express');
 const router = express.Router();
 const Book = require('../models/book');
 
-// Função utilitária para gerar um slug (id do autor) a partir do nome do autor
+// Id slug
 const slugify = name => name.toLowerCase().replace(/\s+/g, '-');
 
-// Rota para a página do autor (deve vir antes da rota de livro para evitar conflito)
 router.get('/entidades/:authorId', async (req, res) => {
   try {
-    // Obter todos os livros
     const allBooks = await Book.find({});
-    // Filtrar livros cujo array de autores contenha algum nome cujo slug corresponda ao parâmetro
     const filteredBooks = allBooks.filter(book =>
       book.author.some(a => slugify(a) === req.params.authorId)
     );
 
-    // Obter o nome do autor a partir do primeiro livro que corresponder
     let authorName = null;
     if (filteredBooks.length > 0) {
       for (let book of filteredBooks) {
@@ -38,7 +34,6 @@ router.get('/entidades/:authorId', async (req, res) => {
   }
 });
 
-// Rota principal: lista de livros
 router.get('/', async (req, res) => {
   try {
     const books = await Book.find({});
@@ -48,7 +43,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Rota para exibir detalhes de um livro (usar o _id do livro)
 router.get('/:id', async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);

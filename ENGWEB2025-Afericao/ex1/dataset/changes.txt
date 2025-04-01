@@ -1,0 +1,3 @@
+id - extrair número inicial e retirar titulo => normalizar
+author - pode ter varios => transformar em uma lista
+genres/characters/awards/ratingsByStars/setting - está em string de uma lista => transformar em apenas lista

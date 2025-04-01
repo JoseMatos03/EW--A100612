@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 Autor: #{authorName} (#{authorId})
+  h2 Livros de #{authorName}
+  table.table.table-striped
+    thead
+      tr
+        th ID
+        th Título
+        th Data de Publicação
+        th Páginas
+    tbody
+      each book in books
+        tr
+          td
+            a(href='/' + book._id)= book._id
+          td= book.title
+          td= book.publishDate
+          td= book.pages
+  p Total de livros: #{total}
+  a(href='/') Voltar à Página Principal

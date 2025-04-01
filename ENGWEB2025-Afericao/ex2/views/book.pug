@@ -1,0 +1,86 @@
+extends layout
+
+block content
+  h1= book.title
+  if book.coverImg
+    img(src=book.coverImg, alt=book.title, style="max-width:200px;")
+  ul
+    li
+      strong ID:
+      span= book._id
+    li
+      strong Título:
+      span= book.title
+    li
+      strong Série:
+      span= book.series
+    li
+      strong Autor(es):
+      span
+        each a, index in book.author
+          - var authorSlug = a.toLowerCase().replace(/\s+/g, '-');
+          a(href='/entidades/' + authorSlug)= a
+          if index != book.author.length - 1
+            | ,
+    li
+      strong Rating:
+      span= book.rating
+    li
+      strong Descrição:
+      span= book.description
+    li
+      strong Linguagem:
+      span= book.language
+    li
+      strong ISBN:
+      span= book.isbn
+    li
+      strong Géneros:
+      span= book.genres.join(', ')
+    li
+      strong Personagens:
+      span= book.characters.join(', ')
+    li
+      strong Formato:
+      span= book.bookFormat
+    li
+      strong Edição:
+      span= book.edition
+    li
+      strong Páginas:
+      span= book.pages
+    li
+      strong Editora:
+      span= book.publisher
+    li
+      strong Data de Publicação:
+      span= book.publishDate
+    li
+      strong Data do Primeiro Lançamento:
+      span= book.firstPublishDate
+    li
+      strong Prémios:
+      span= book.awards.join(', ')
+    li
+      strong Número de Ratings:
+      span= book.numRatings
+    li
+      strong Ratings por Estrelas:
+      span= book.ratingsByStars.join(', ')
+    li
+      strong Percentagem de Likes:
+      span= book.likedPercent
+    li
+      strong Definição:
+      span= book.setting.join(', ')
+    li
+      strong BBE Score:
+      span= book.bbeScore
+    li
+      strong BBE Votes:
+      span= book.bbeVotes
+    li
+      strong Preço:
+      span= book.price
+  br
+  a(href='/') Voltar à Página Principal

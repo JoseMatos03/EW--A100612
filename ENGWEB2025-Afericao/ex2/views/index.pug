@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1 Lista de Livros
+  p Bem-vindo à Books App!
+  table.table.table-striped
+    thead
+      tr
+        th ID
+        th Título
+        th Autor
+        th Data de Publicação
+        th Páginas
+    tbody
+      each book in books
+        tr
+          // O ID é um link para a página do livro
+          td
+            a(href='/' + book._id)= book._id
+          td= book.title
+          td
+            each a, index in book.author
+              // Gera o slug do autor (nome em minúsculas com espaços substituídos por hífen)
+              - var authorSlug = a.toLowerCase().replace(/\s+/g, '-');
+              a(href='/entidades/' + authorSlug)= a
+              if index != book.author.length - 1
+                | ,
+          td= book.publishDate
+          td= book.pages

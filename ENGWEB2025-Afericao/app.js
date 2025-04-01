@@ -10,17 +10,16 @@ const app = express();
 
 // Configuração do Pug
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'ex2/views'));
 
 // Middleware para ler JSON no body (caso necessário para a API)
 app.use(express.json());
 
-// Ligação à BD (ajusta a string de conexão conforme necessário)
+// Ligação à BD
 mongoose.connect('mongodb://localhost:27017/livros')
 .then(() => console.log('MongoDB conectado'))
 .catch(err => console.error(err));
 
-// Monta os routers
 app.use('/', apiRouter);
 app.use('/', viewsRouter);
 

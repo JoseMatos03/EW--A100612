@@ -4,6 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "start:docker": "docker compose up --build --force-recreate",
     "dev": "nodemon app.js"
   },
   "keywords": [],
